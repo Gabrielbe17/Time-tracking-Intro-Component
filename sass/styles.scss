@@ -1,0 +1,180 @@
+@use 'abstracts/variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+
+// General styles
+html{
+    font-size: 18px;
+    overflow-x: hidden;
+}
+
+body, p{
+    font-family: 'Barlow', sans-serif;
+}
+ul{
+    list-style: none;
+}
+button{
+    border: none;
+    background-color: transparent;
+    color: $LightGrayishBlue;
+}
+.img{
+    width: 100%;
+    max-width: 85em;
+    margin: 0 auto;
+}
+header{
+    background:#fff;
+    outline: 2px solid $GrayishBlue;
+}
+
+.box{
+    width: 55%;
+    height: 20em;
+    background: $LightGrayishBlue;
+    position: absolute;
+    top: 0;
+    border-radius: 0 0 2em 2em;
+    right: 0;
+    z-index: -1;
+}
+// Header
+.header{
+    padding: 2em 1.2em;
+    max-width: 80em;
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+    font-family: 'Barlow Condensed', sans-serif; //headers, cta and navigation
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    
+        // Nav Links
+        ul{
+            display: flex;
+            padding-left: 0;
+            gap: 1.5em;
+
+            & li:last-of-type{   
+                color: $GrayishBlue;
+            }
+            li{
+                cursor: pointer;
+                letter-spacing: .1em;
+                font-weight: 600;
+                color: $VeryDarkBlue;
+                transition: all .1s;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+             .span{
+                width: .45em;
+                height: .45em;
+                align-self: center;
+                margin: 0 1em;
+                background-color: $GrayishBlue;
+                border-radius: 50%;
+            }
+
+            //Responsiveness
+            @media (max-width:650px) {
+                display: none;
+            }
+        }
+
+        // Toggle menu
+        .toggle-menu{
+            cursor: pointer;
+            @media (min-width:650px) {
+                display: none;
+            }
+        }
+    }
+   
+}
+// Hero Section
+.hero{
+    padding: 4em 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap:1.25em;
+
+    &__text{
+
+        h3:first-child{
+            display: flex;
+            align-items: center;
+            gap: .5em;
+            color: $GrayishBlue;
+            font-weight: 400;
+            letter-spacing: .1em;
+
+            span{
+                background-color: $VeryDarkBlue;
+                padding: .1em .6em;
+                border-radius: 1em;
+                color: $LightGrayishBlue;
+            }
+        }
+        h1{
+            color: $VeryDarkBlue;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+        }
+        p{
+            color: $DarkGrayishBlue;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        // Cta
+        &-cta{
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            // All direct children
+            & > *{  
+                cursor: pointer;
+            }
+            // Cta 
+            .cta{
+                background-color: $red;
+                font-weight: 600;
+                border-radius: .45em;
+                text-transform: uppercase;
+                padding: .8em 1em;
+                letter-spacing: .1em;
+                transition: opacity .3s;
+
+                &:hover{
+                    opacity: .7;
+                }
+            }
+            h3{
+                font-weight: 500;
+                color: $GrayishBlue;
+                letter-spacing: .1em;
+            }
+        }
+
+
+        @media (max-width:750px) {
+            order: 2;
+        }
+    }
+    
+    @media (min-width:1100px) {
+        grid-template-columns: 1fr 2fr;
+    }
+
+}
+
+ul li, .hero__text > *:not(p){
+    text-transform: uppercase;
+}
