@@ -25,9 +25,11 @@ button{
 }
 header{
     background:#fff;
-    outline: 2px solid $GrayishBlue;
 }
 
+ul li, .hero__text > *:not(p){
+    text-transform: uppercase;
+}
 .box{
     width: 55%;
     height: 20em;
@@ -38,6 +40,7 @@ header{
     right: 0;
     z-index: -1;
 }
+
 // Header
 .header{
     padding: 2em 1.2em;
@@ -45,7 +48,7 @@ header{
     z-index: 1;
     position: relative;
     margin: 0 auto;
-    font-family: 'Barlow Condensed', sans-serif; //headers, cta and navigation
+    font-family: 'Barlow Condensed', sans-serif; 
 
     nav{
         display: flex;
@@ -54,44 +57,90 @@ header{
 
     
         // Nav Links
-        ul{
-            display: flex;
-            padding-left: 0;
-            gap: 1.5em;
+        #nav-links{
+    
+            // Mobile Menu
+            position: absolute;
+            top: 27%;  
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-family: 'Barlow', sans-serif;
+            padding: 3em 6.5em;
+            display: flex;  
+            flex-direction: column;
+            cursor: pointer;
+            background-color: #fff;
+            box-shadow: .2em .1em .15em  rgba(44, 44, 44, 0.24);
+            font-weight: 900;
+            gap: 1em;
+            text-align: center;
+            display: none;
 
-            & li:last-of-type{   
-                color: $GrayishBlue;
+            &.showMenu{
+                display: flex;
             }
-            li{
-                cursor: pointer;
-                letter-spacing: .1em;
-                font-weight: 600;
-                color: $VeryDarkBlue;
-                transition: all .1s;
 
-                &:hover{
-                    text-decoration: underline;
+            li{
+                &:last-of-type{
+                    color: rgba(44, 44, 44, 0.685);
+                    padding: 1em 0; 
+
+                    @media (max-width:650px){
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            left: 6%;
+                            top: 9.5em;
+                            width: 90%;
+                            height: .1em;
+                            background-color: rgba(44, 44, 44, 0.123);
+                        }
+                    }
                 }
             }
-             .span{
+            @media (min-width:650px) {
+                all: inherit;
+                text-transform: uppercase;
+                gap: 1em;
+                font-weight: 600;
+                color: $VeryDarkBlue;
+                li{
+                    all: inherit;
+                    cursor: pointer;
+                    transition: all .2s;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                & li:last-of-type{   
+                    color: $GrayishBlue;
+                }
+            }
+            .span{
                 width: .45em;
                 height: .45em;
                 align-self: center;
                 margin: 0 1em;
                 background-color: $GrayishBlue;
                 border-radius: 50%;
-            }
 
-            //Responsiveness
-            @media (max-width:650px) {
-                display: none;
+                @media (max-width:650px) {
+                    display: none;
+                }
             }
         }
 
         // Toggle menu
-        .toggle-menu{
+        #toggle-menu{
             cursor: pointer;
+            display: flex;
+            align-items: center;
+
             @media (min-width:650px) {
+                display: none;
+            }
+
+            #closeMenu{
                 display: none;
             }
         }
@@ -125,7 +174,7 @@ header{
         }
         h1{
             color: $VeryDarkBlue;
-            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
         }
         p{
             color: $DarkGrayishBlue;
@@ -136,11 +185,13 @@ header{
         &-cta{
             display: flex;
             align-items: center;
-            gap: 1em;
+            gap: 1em;            
 
             // All direct children
             & > *{  
+                width: 100%;
                 cursor: pointer;
+                font-size: clamp(1rem, 2vw, 1.2rem);
             }
             // Cta 
             .cta{
@@ -160,6 +211,11 @@ header{
                 font-weight: 500;
                 color: $GrayishBlue;
                 letter-spacing: .1em;
+                
+            }
+
+            @media (min-width:900px) {
+                margin-top: 4em;
             }
         }
 
@@ -173,8 +229,4 @@ header{
         grid-template-columns: 1fr 2fr;
     }
 
-}
-
-ul li, .hero__text > *:not(p){
-    text-transform: uppercase;
 }

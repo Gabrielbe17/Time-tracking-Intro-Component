@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/styles.css">
   <!-- Script -->
+  <script src="js/script.js" defer></script>
 </head>
 <body>
   <header>
@@ -24,10 +25,12 @@
         <img src="images/logo.svg" alt="">
 
         <!-- Hamburger menu -->
-        <button class="toggle-menu">
-          <img src="images/icon-hamburger.svg" alt="">
+        <button id="toggle-menu">
+          <img src="images/icon-hamburger.svg" alt="" id="hamMenu">
+          <img src="images/icon-close.svg" alt="" id="closeMenu">
         </button>
-        <ul>
+        <!-- Navigation Links -->
+        <ul id="nav-links">
           <li>Product</li>
           <li>Features</li>
           <li>Pricing</li>
